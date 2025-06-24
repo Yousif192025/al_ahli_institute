@@ -534,6 +534,7 @@
             <input type="text" id="marketerName" class="marketer-input" placeholder="اسمك (اختياري)">
             <button class="marketer-submit" onclick="setMarketerInfo()">بدء التسويق</button>
             <p style="font-size: 0.8rem; margin-top: 15px;">سيتم حفظ هذه المعلومات في الرابط ويمكنك مشاركته مع العملاء</p>
+            <p style="font-size: 0.8rem; margin-top: 15px;">مع تحياتي & يوسف</p>
         </div>
     </div>
     
