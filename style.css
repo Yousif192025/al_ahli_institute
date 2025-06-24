@@ -46,9 +46,17 @@
             justify-content: center; /* Added for logo alignment */
         }
         
-        header img {
+        header .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px; /* Spacing between logos and text */
+        }
+
+        header .logo-container img {
             max-width: 100px;
-            margin: 0 10px 15px; /* Adjust margin for spacing below logos */
+            margin: 0 10px; /* Spacing between individual logos */
+            height: auto; /* Ensure aspect ratio is maintained */
         }
 
         header::before {
@@ -102,6 +110,124 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        /* Video Section */
+        .video-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Slideshow Section */
+        .slideshow-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .slide {
+            display: none;
+            width: 100%;
+            transition: opacity 1s ease;
+        }
+        
+        .slide img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .slide.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes fadeIn {
+            from {opacity: 0.4;}
+            to {opacity: 1;}
+        }
+        
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 10; /* لضمان ظهور الأسهم فوق الصور */
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .dots-container {
+            text-align: center;
+            margin-top: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .dot.active {
+            background-color: var(--secondary);
         }
         
         .diplomas-container {
@@ -226,8 +352,26 @@
             padding: 30px 0;
             margin-top: 50px;
             border-radius: 20px 20px 0 0;
+            display: flex; /* Added for logo alignment */
+            flex-direction: column; /* Added for logo alignment */
+            align-items: center; /* Added for logo alignment */
+            justify-content: center; /* Added for logo alignment */
         }
         
+        footer .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px; /* Spacing above logos */
+            margin-bottom: 10px;
+        }
+
+        footer .logo-container img {
+            max-width: 80px; /* Adjust size for footer logos */
+            margin: 0 5px; /* Adjust margin for footer logos */
+            height: auto;
+        }
+
         .contact-info {
             font-size: 1.5rem;
             font-weight: bold;
@@ -395,8 +539,10 @@
     
     <header>
         <div class="container">
-            <img src="my-images/log1.png" alt="شعار المعهد الأهلي العالي للتدريب" style="max-width: 100px; margin-bottom: 15px;">
-            <img src="my-images/logo.png" alt="شعار المؤسسة العامة للتدريب المهني والتقني" style="max-width: 100px; margin-bottom: 15px;">
+            <div class="logo-container">
+                <img src="my-images/log1.png" alt="شعار المعهد الأهلي العالي للتدريب">
+                <img src="my-images/logo.png" alt="شعار المؤسسة العامة للتدريب المهني والتقني">
+            </div>
             <div id="marketerInfo" class="marketer-info" style="display: none;"></div>
             <h1>المعهد الأهلي العالي للتدريب</h1>
             <p>نحو مستقبل مهني مشرق ببرامج تدريبية معتمدة</p>
@@ -405,10 +551,96 @@
     </header>
     
     <div class="container">
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2 style="text-align: center; color: var(--primary);">فيديو تعريفي عن المعهد</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">شاهد هذا الفيديو للتعرف أكثر على برامجنا التدريبية</p>
+            
+            <div class="video-container">
+                <!-- Replace with your actual video embed code -->
+                <iframe src="https://streamable.com/rpul8w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Slideshow Section -->
+        <div class="slideshow-section">
+            <h2 style="text-align: center; color: var(--primary);">معرض الصور</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">جولة مصورة داخل مرافق المعهد وورش العمل</p>
+            
+            <div class="slideshow-container">
+                <!-- شريحة 1 -->
+                <div class="slide active">
+                    <img src="my-images/photo1.jpg" alt="صورة 1 للمعهد">
+                </div>
+                
+                <!-- شريحة 2 -->
+                <div class="slide">
+                    <img src="my-images/photo2.jpg" alt="صورة 2 للمعهد">
+                </div>
+                
+                <!-- شريحة 3 -->
+                <div class="slide">
+                    <img src="my-images/photo3.jpg" alt="صورة 3 للمعهد">
+                </div>
+                
+                <!-- شريحة 4 -->
+                <div class="slide">
+                    <img src="my-images/photo4.jpg" alt="صورة 4 للمعهد">
+                </div>
+                
+                <!-- شريحة 5 -->
+                <div class="slide">
+                    <img src="my-images/photo5.jpg" alt="صورة 5 للمعهد">
+                </div>
+                
+                <!-- شريحة 6 -->
+                <div class="slide">
+                    <img src="my-images/photo6.jpg" alt="صورة 6 للمعهد">
+                </div>
+                
+                <!-- شريحة 7 -->
+                <div class="slide">
+                    <img src="my-images/photo7.jpg" alt="صورة 7 للمعهد">
+                </div>
+                
+                <!-- شريحة 8 -->
+                <div class="slide">
+                    <img src="my-images/photo8.jpg" alt="صورة 8 للمعهد">
+                </div>
+                
+                <!-- شريحة 9 -->
+                <div class="slide">
+                    <img src="my-images/photo9.jpg" alt="صورة 9 للمعهد">
+                </div>
+                
+                <!-- شريحة 10 -->
+                <div class="slide">
+                    <img src="my-images/photo10.jpg" alt="صورة 10 للمعهد">
+                </div>
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            
+            <div class="dots-container">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+            </div>
+        </div>
+
         <h2 style="text-align: center; color: var(--primary); margin-bottom: 10px;">برامج الدبلومات المعتمدة</h2>
         <p style="text-align: center; margin-bottom: 30px; color: #666;">برامج تدريبية متخصصة لمدة سنتين ونصف معتمدة بسعر مميز</p>
         
         <div class="diplomas-container">
+            <!-- Diploma 1 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم إدارة المستشفيات والخدمات الصحية</h3>
@@ -436,6 +668,7 @@
                 </div>
             </div>
             
+            <!-- Diploma 2 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم إدارة الخدمات اللوجستية</h3>
@@ -463,6 +696,7 @@
                 </div>
             </div>
             
+            <!-- Diploma 3 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم علوم الحاسب الآلي التطبيقي</h3>
@@ -490,6 +724,7 @@
                 </div>
             </div>
             
+            <!-- Diploma 4 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم إدارة الموارد البشرية</h3>
@@ -517,6 +752,7 @@
                 </div>
             </div>
             
+            <!-- Diploma 5 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم الإدارة المكتبية</h3>
@@ -544,6 +780,7 @@
                 </div>
             </div>
             
+            <!-- Diploma 6 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم الأمن السيبراني</h3>
@@ -597,6 +834,7 @@
         </div>
     </div>
 
+    <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -627,11 +865,64 @@
                 <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
             </a>
             
+            <div class="logo-container">
+                <img src="my-images/log1.png" alt="شعار المعهد الأهلي العالي للتدريب">
+                <img src="my-images/logo.png" alt="شعار المؤسسة العامة للتدريب المهني والتقني">
+            </div>
+
             <p style="margin-top: 30px; opacity: 0.8;">© 2025 Yousif جميع الحقوق محفوظة</p>
         </div>
     </footer>
 
     <script>
+        // Slideshow functionality (corrected)
+        let slideIndex = 0;
+        showSlides(slideIndex); // ابدأ من الشريحة الأولى (فهرس 0)
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // هذه الدالة تستقبل الفهرس مباشرة (0 لـ الصورة الأولى، 1 لـ الثانية، وهكذا)
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+
+            if (slides.length === 0) { // تأكد من وجود شرائح قبل المتابعة
+                console.warn("لا توجد شرائح في معرض الصور.");
+                return;
+            }
+
+            // ضبط slideIndex إذا تجاوز الحدود
+            if (n >= slides.length) { slideIndex = 0 }
+            if (n < 0) { slideIndex = slides.length - 1 }
+
+            // إخفاء جميع الشرائح وإزالة التفعيل من جميع النقاط
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+
+            // تفعيل الشريحة والنقطة الحالية
+            slides[slideIndex].classList.add("active");
+            // تأكد من أن الفهرس صالح للنقاط أيضاً
+            if (slideIndex < dots.length) {
+                dots[slideIndex].classList.add("active");
+            }
+        }
+
+        // Auto slide change every 5 seconds
+        setInterval(() => {
+            plusSlides(1);
+        }, 5000);
+
         // Global variable to store marketer info
         let marketerData = {
             whatsapp: '',
