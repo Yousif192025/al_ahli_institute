@@ -40,8 +40,17 @@
             margin-bottom: 30px;
             position: relative;
             overflow: hidden;
+            display: flex; /* Added for logo alignment */
+            flex-direction: column; /* Added for logo alignment */
+            align-items: center; /* Added for logo alignment */
+            justify-content: center; /* Added for logo alignment */
         }
         
+        header img {
+            max-width: 100px;
+            margin: 0 10px 15px; /* Adjust margin for spacing below logos */
+        }
+
         header::before {
             content: "الفصل الدراسي صفر 1447";
             position: absolute;
@@ -386,6 +395,8 @@
     
     <header>
         <div class="container">
+            <img src="my-images/log1.png" alt="شعار المعهد الأهلي العالي للتدريب" style="max-width: 100px; margin-bottom: 15px;">
+            <img src="my-images/logo.png" alt="شعار المؤسسة العامة للتدريب المهني والتقني" style="max-width: 100px; margin-bottom: 15px;">
             <div id="marketerInfo" class="marketer-info" style="display: none;"></div>
             <h1>المعهد الأهلي العالي للتدريب</h1>
             <p>نحو مستقبل مهني مشرق ببرامج تدريبية معتمدة</p>
@@ -398,7 +409,6 @@
         <p style="text-align: center; margin-bottom: 30px; color: #666;">برامج تدريبية متخصصة لمدة سنتين ونصف معتمدة بسعر مميز</p>
         
         <div class="diplomas-container">
-            <!-- Diploma 1 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم إدارة المستشفيات والخدمات الصحية</h3>
@@ -426,7 +436,6 @@
                 </div>
             </div>
             
-            <!-- Diploma 2 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم إدارة الخدمات اللوجستية</h3>
@@ -454,7 +463,6 @@
                 </div>
             </div>
             
-            <!-- Diploma 3 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم علوم الحاسب الآلي التطبيقي</h3>
@@ -482,7 +490,6 @@
                 </div>
             </div>
             
-            <!-- Diploma 4 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم إدارة الموارد البشرية</h3>
@@ -510,7 +517,6 @@
                 </div>
             </div>
             
-            <!-- Diploma 5 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم الإدارة المكتبية</h3>
@@ -538,7 +544,6 @@
                 </div>
             </div>
             
-            <!-- Diploma 6 -->
             <div class="diploma-card">
                 <div class="diploma-header">
                     <h3>دبلوم الأمن السيبراني</h3>
@@ -592,7 +597,6 @@
         </div>
     </div>
 
-    <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -672,8 +676,8 @@
             
             // Update URL with marketer info
             const newUrl = window.location.href.split('?')[0] + 
-                          `?whatsapp=${encodeURIComponent(marketerData.whatsapp)}` +
-                          `&name=${encodeURIComponent(marketerData.name)}`;
+                                `?whatsapp=${encodeURIComponent(marketerData.whatsapp)}` +
+                                `&name=${encodeURIComponent(marketerData.name)}`;
             window.history.replaceState({}, '', newUrl);
             
             updatePageWithMarketerInfo();
@@ -684,8 +688,8 @@
         function updatePageWithMarketerInfo() {
             // Update modal and footer with whatsapp number
             const formattedNumber = marketerData.whatsapp.startsWith('0') ? 
-                                  `966${marketerData.whatsapp.substring(1)}` : 
-                                  marketerData.whatsapp;
+                                    `966${marketerData.whatsapp.substring(1)}` : 
+                                    marketerData.whatsapp;
             
             document.getElementById('displayWhatsappNumber').innerHTML = 
                 `<i class="fab fa-whatsapp"></i> ${marketerData.whatsapp}`;
