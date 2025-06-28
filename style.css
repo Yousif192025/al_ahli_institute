@@ -551,19 +551,16 @@
         </div>
     </header>
     
-    <div class="container">
-        <!-- Video Section -->
-        <div class="video-section">
-            <h2 style="text-align: center; color: var(--primary);">فيديو تعريفي عن المعهد</h2>
-            <p style="text-align: center; margin-bottom: 20px; color: #666;">شاهد هذا الفيديو للتعرف أكثر على برامجنا التدريبية</p>
-            
-            <div class="video-container">
-                <!-- Replace with your actual video embed code -->
-                <iframe src="https://streamable.com/rpul8w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
+   <div class="container">
+    <div class="video-section">
+        <h2 style="text-align: center; color: var(--primary);">فيديو تعريفي عن المعهد</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: #666;">شاهد هذا الفيديو للتعرف أكثر على برامجنا التدريبية</p>
 
-        <!-- Slideshow Section -->
+        <div class="video-container">
+            <iframe src="https://streamable.com/rpul8w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
         <div class="slideshow-section">
             <h2 style="text-align: center; color: var(--primary);">معرض الصور</h2>
             <p style="text-align: center; margin-bottom: 20px; color: #666;">جولة مصورة داخل مرافق المعهد وورش العمل</p>
